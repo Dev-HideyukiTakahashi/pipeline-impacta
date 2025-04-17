@@ -69,3 +69,17 @@ jobs:
         run: |
           echo "Verificando se ambiente está pronto para produção..."
           echo "Ambiente pronto!"
+
+      # Step 11: Deploy
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Token da Vercel armazenado no GitHub Secrets
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} # ID da organização na Vercel
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # ID do projeto na Vercel
+          vercel-rc: true # Configuração para deploy (tentar em ambiente de produção)
+
+      - name: Post-deploy checks
+        run: |
+          echo "Verificando se a aplicação está rodando..."
+          curl -f https://pipeline-impacta.vercel.app/api || exit 1  # Verifica se o site está acessível
