@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 
 app.get('/api', (req, res) => {
-  res.json({ message: 'Olá github Actions! Funcionei!' });
+  res.json({ message: 'Olá github Actions! Funcionei !' });
 });
 
 app.listen(port, () => {
