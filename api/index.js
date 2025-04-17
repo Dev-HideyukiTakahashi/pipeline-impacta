@@ -18,3 +18,5 @@ app.get('/api', (req, res) => {
 app.listen(port, () => {
   console.log(`App rodando http://localhost:${port}`);
 });
+
+module.exports = app;
