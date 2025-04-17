@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pipeline</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>GitHub Actions Pipeline</h1>
+    <p id="api-message">Loading...</p>
+    <script>
+      fetch('/api')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('api-message').textContent = data.message;
+        })
+        .catch(error => {
+          document.getElementById('api-message').textContent = 'API Deu ruim GitHub Actions.';
+        });
+    </script>
+  </body>
+</html>
